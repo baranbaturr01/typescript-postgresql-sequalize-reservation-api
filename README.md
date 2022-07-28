@@ -1,7 +1,8 @@
 # Using Typescript and Create a Reservation App
 
 
-Typescript Projesi Oluşturma Adımları
+### Typescript Projesi Oluşturma Adımları
+
 **1)** Öncelikle typescript kütüphanesini kurmamız gerekiyor. npm install -g typescript komutu ile typescript kütüphanesini bilgisayarımıza global olarak kuruyoruz.
 
 **2)** tsconfig dosyası konfigürasyonu yapılmalıdır. Bir dizinde tsconfig.json dosyasının bulunması, dizinin bir typescript projesinin kökü olduğunu gösterir. tscongif.json projeyi derlemek için gereken kök dosyaları ve derleyici seçeneklerini belirtir.
