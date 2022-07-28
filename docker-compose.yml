@@ -1,0 +1,21 @@
+version: '3.2'
+services:
+  postgres:
+    container_name: postgres-typescript
+    image: postgres:14.0
+    volumes:
+      - postgres:/data/postgresql
+    ports:
+      - "5430:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: toor
+      POSTGRES_DB: reservation
+    networks:
+      - postgres-backend
+
+volumes:
+  postgres:
+
+networks:
+  postgres-backend:
