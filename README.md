@@ -24,7 +24,7 @@
 **5)** Bu işlemlerin ardından `package.json` dosyasını güncelliyoruz. Öncelikle `npm install -D concurrently nodemon` komutunu kullanarak paketimiz kuruyoruz.
 
    - Daha sonra `package.json` dosyasını güncelliyoruz.
-      ![](../image.png)
+      ![](./images/package.png)
 
 **7)** tsc komutu ile projemizi build ediyoruz. Bu noktada bizim yazdığımız typescript kodları javascript kodlarına derlenecektir. Derlenen kodlar tsconfig.json içinde bulunan outDir klasörü içinde bulunur. 
 
