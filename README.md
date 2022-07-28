@@ -29,6 +29,7 @@
 **7)** tsc komutu ile projemizi build ediyoruz. Bu noktada bizim yazdığımız typescript kodları javascript kodlarına derlenecektir. Derlenen kodlar tsconfig.json içinde bulunan outDir klasörü içinde bulunur. 
 
 **8)** start komutu ile derlenen javascript kodunu çalıştırıyoruz.
+
 **9)** Yapılan bu işlemleri her kod değişikliğinde tek tek yapmak maliyetli olacağından dolayı bu işleri otomatize edecek bir script yazıyoruz. Burda kullandığımız concurrently paketi aynı anda birden fazla komut çalıştırmak için kullanıyoruz. nodemon paketini ise kodumuzda bir değişiklik olduğunda bunu algılayıp projeyi yeniden çalıştırmak için kullanıyoruz. dev komutunu çalıştırdığımızda önce yazdığımız typescript kodlarını javascript koduna derleyip daha sonra derlenen bu kodu nodemon ile çalıştırıyoruz.  Bu sayede kodumuzda değişiklik yaptığımızda otomatik olarak proje tekrar çalıştırılacaktır.
 
 
