@@ -3,11 +3,11 @@
 
 ### Typescript Projesi Oluşturma Adımları
 
-**1)** Öncelikle typescript kütüphanesini kurmamız gerekiyor. npm install -g typescript komutu ile typescript kütüphanesini bilgisayarımıza global olarak kuruyoruz.
+**1)** Öncelikle typescript kütüphanesini kurmamız gerekiyor. `npm install -g typescript` komutu ile typescript kütüphanesini bilgisayarımıza global olarak kuruyoruz.
 
-**2)** tsconfig dosyası konfigürasyonu yapılmalıdır. Bir dizinde tsconfig.json dosyasının bulunması, dizinin bir typescript projesinin kökü olduğunu gösterir. tscongif.json projeyi derlemek için gereken kök dosyaları ve derleyici seçeneklerini belirtir.
+**2)** tsconfig dosyası konfigürasyonu yapılmalıdır. Bir dizinde tsconfig.json dosyasının bulunması, dizinin bir typescript projesinin kökü olduğunu gösterir. `tscongif.json` projeyi derlemek için gereken kök dosyaları ve derleyici seçeneklerini belirtir.
 
-**3)** tsc –init komutu yeni bir tescongif.json oluşturmak için kullanılır. Oluşturulan bu tsconfig.json dosyasının içinde derleyiciye uygun bir şekilde varsayılan ayarlar gelir.
+**3)** `tsc –init` komutu yeni bir tscongif.json oluşturmak için kullanılır. Oluşturulan bu tsconfig.json dosyasının içinde derleyiciye uygun bir şekilde varsayılan ayarlar gelir.
    
  
     - Bazı tsconfig özellikleri;
@@ -19,13 +19,12 @@
      - outDir: Derlenmiş kodun çıkarılacağı yolu belirtir.
      - rootDir: Derlenecek olan typescript kodunun yolunu gösterir.
 
-**4)** Projeyi derledikten sonra `tsconfig.json` dosyasında belirttiğimiz outDir adresinde projenin javascrit haline derlenmiş kodları bulunur. Derlenmiş projeyi çalıştırmak için node `{outDir}/app.js` komutu kullanılır.
+**4)** Projeyi derledikten sonra `tsconfig.json` dosyasında belirttiğimiz `outDir` adresinde projenin javascrit haline derlenmiş kodları bulunur. Derlenmiş projeyi çalıştırmak için node `{outDir}/app.js` komutu kullanılır.
 
-**5)** Bu işlemlerin ardından `package.json` dosyasını güncelliyoruz. Öncelikle npm install -D concurrently nodemon komutunu kullanarak paketimiz kuruyoruz.
+**5)** Bu işlemlerin ardından `package.json` dosyasını güncelliyoruz. Öncelikle `npm install -D concurrently nodemon` komutunu kullanarak paketimiz kuruyoruz.
 
    - Daha sonra `package.json` dosyasını güncelliyoruz.
- 
-
+      ![](../image.png)
 
 **7)** tsc komutu ile projemizi build ediyoruz. Bu noktada bizim yazdığımız typescript kodları javascript kodlarına derlenecektir. Derlenen kodlar tsconfig.json içinde bulunan outDir klasörü içinde bulunur. 
 
