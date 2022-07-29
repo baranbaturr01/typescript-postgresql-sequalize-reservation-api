@@ -5,6 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const routes = express_1.default.Router();
-routes.post('/');
+routes.post('/customer/add', require("../controller/customer/create"));
 exports.default = routes;
 //# sourceMappingURL=mobile.js.map

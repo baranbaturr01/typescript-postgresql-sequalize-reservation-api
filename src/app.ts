@@ -15,11 +15,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-})
-
-app.use('/api/v1/', require('./routes/mobile'));
+// app.get('/', (req, res) => {
+//     res.send('Hello World');
+// })
+//
+// app.use('/api/v1/', require('./routes/mobile'));
 
 //connect to database
 connection.sync({force: true}).then(() => {
