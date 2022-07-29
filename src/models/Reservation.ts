@@ -40,5 +40,5 @@ export default class Reservation extends Model<Reservation> {
     })
     time!: Date;
 }
-Reservation.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id'});
-Reservation.belongsTo(Store, {foreignKey: 'store_id', targetKey: 'id'});
+// Reservation.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id'});
+// Reservation.belongsTo(Store, {foreignKey: 'store_id', targetKey: 'id'});

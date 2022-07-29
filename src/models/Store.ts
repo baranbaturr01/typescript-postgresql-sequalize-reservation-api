@@ -32,4 +32,6 @@ export default class Store extends Model<Store> {
     })
     lng!: number;
 }
-Store.belongsTo(Customer, {foreignKey: 'customer_id', targetKey: 'id'});
+
+
+// Store.belongsTo(Customer, {foreignKey: 'customer_id', targetKey: 'id'});

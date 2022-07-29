@@ -1,9 +1,9 @@
 import CustomerService from "../../service/CustomerService";
-const service = new CustomerService();
+const customerService = new CustomerService();
 import {Request,Response} from "express";
 
 module.exports = (req:Request, res:Response) => {
-    service.create(req.body).then(customer => {
+    customerService.create(req.body).then(customer => {
         res.json({
             success:true,
         })

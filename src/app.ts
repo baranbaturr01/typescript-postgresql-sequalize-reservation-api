@@ -3,9 +3,15 @@ import express from 'express';
 import {config} from 'dotenv';
 import bodyParser from 'body-parser';
 import connection from "./config/connection";
+import {Customer} from "./models/Customer";
+import Store from "./models/Store";
+import User from "./models/User";
+import Reservation from "./models/Reservation";
+import Work from "./models/Work";
 
 config()
 const app = express();
+const routes = require("./routes/mobile")
 
 if (!process.env.PORT) {
     console.log('Error to get Port')
@@ -19,7 +25,7 @@ app.use(bodyParser.json());
 //     res.send('Hello World');
 // })
 //
-// app.use('/api/v1/', require('./routes/mobile'));
+app.use('/mobile', routes)
 
 //connect to database
 connection.sync({force: true}).then(() => {
