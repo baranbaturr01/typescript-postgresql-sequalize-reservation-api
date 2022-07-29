@@ -4,6 +4,7 @@ import Reservation from "../models/Reservation";
 import Work from "../models/Work";
 import Store from "../models/Store";
 import User from "../models/User";
+import Customer from "../models/Customer";
 
 config()
 console.log('Connecting to database...');
@@ -19,7 +20,7 @@ const connection = new Sequelize({
     username: username,
     password: password,
     database: database,
-    models: [User],
+    models: [User, Store, Work, Reservation,Customer],
     logging: true,
     define: {
         timestamps: true,

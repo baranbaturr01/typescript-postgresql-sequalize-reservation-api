@@ -11,6 +11,7 @@ module.exports = (req:Request, res:Response) => {
         res.status(500).json({
             code:500,
             message: err.message,
+
         })
     })
 }

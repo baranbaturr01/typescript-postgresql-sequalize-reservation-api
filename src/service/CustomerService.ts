@@ -1,6 +1,6 @@
 import ICustomer from "../Interface/ICustomer";
-import {Customer} from "../models/Customer";
 import ICustomerRepo from "../Repository/ICustomerRepo";
+import Customer from "../models/Customer";
 
 export default class CustomerService implements ICustomerRepo {
 

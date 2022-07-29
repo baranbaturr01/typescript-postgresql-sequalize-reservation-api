@@ -5,7 +5,7 @@ import IUser from "../Interface/IUser";
     tableName: "users",
     timestamps: true,
 })
-export default class User extends Model<User>{
+export default class User extends Model<User> implements IUser {
     @Column({
         type: DataType.INTEGER,
         primaryKey: true,

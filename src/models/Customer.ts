@@ -5,7 +5,7 @@ import ICustomer from "../Interface/ICustomer";
     tableName: "customers",
     timestamps: true,
 })
-export class Customer extends Model<Customer> implements ICustomer {
+export default class Customer extends Model<Customer> implements ICustomer {
     @Column({
         type: DataType.INTEGER,
         primaryKey: true,
