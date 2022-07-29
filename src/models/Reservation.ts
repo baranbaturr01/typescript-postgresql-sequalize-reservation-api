@@ -1,6 +1,4 @@
 import {Table, Model, Column, DataType} from "sequelize-typescript";
-import User from "./User";
-import Store from "./Store";
 
 @Table({
     tableName: "reservations",

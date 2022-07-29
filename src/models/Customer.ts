@@ -35,7 +35,7 @@ export class Customer extends Model<Customer> implements ICustomer {
         type: DataType.STRING,
         allowNull: true,
     })
-    email?: string;
+    email!: string;
 
     @Column({
         type: DataType.STRING,
@@ -48,6 +48,5 @@ export class Customer extends Model<Customer> implements ICustomer {
         allowNull: false,
     })
     phone!: string;
-
 }
 

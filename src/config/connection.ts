@@ -1,9 +1,8 @@
 import {Sequelize} from 'sequelize-typescript';
 import {config} from 'dotenv';
-import {Customer} from "../models/Customer";
-import Store from "../models/Store";
-import Work from "../models/Work";
 import Reservation from "../models/Reservation";
+import Work from "../models/Work";
+import Store from "../models/Store";
 import User from "../models/User";
 
 config()
@@ -19,11 +18,8 @@ const connection = new Sequelize({
     port: 5430,
     username: username,
     password: password,
-
     database: database,
-    //add customer model
-
-    models: [Customer, Store, User, Reservation, Work],
+    models: [User],
     logging: true,
     define: {
         timestamps: true,

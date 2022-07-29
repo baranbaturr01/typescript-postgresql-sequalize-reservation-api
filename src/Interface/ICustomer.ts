@@ -1,5 +1,6 @@
 import {Customer} from "../models/Customer";
 import {SequelizeHooks} from "sequelize/types/hooks";
+import {IntegerDataType} from "sequelize";
 
 interface ICustomer {
     id?: number;

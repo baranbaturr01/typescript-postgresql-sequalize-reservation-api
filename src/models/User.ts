@@ -1,21 +1,21 @@
-import {Table, Model, Column, DataType, Scopes} from "sequelize-typescript";
+import {Table, Model, Column, DataType} from "sequelize-typescript";
+import IUser from "../Interface/IUser";
 
 @Table({
     tableName: "users",
     timestamps: true,
 })
-export default class User extends Model<User> {
+export default class User extends Model<User>{
     @Column({
         type: DataType.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     })
-    id!: number ;
+    id!: number;
 
     @Column({
         type: DataType.STRING,
         allowNull: false,
-
     })
     first_name!: string;
 
@@ -38,7 +38,7 @@ export default class User extends Model<User> {
     password!: string;
 
     @Column({
-        type: DataType.NUMBER,
+        type: DataType.INTEGER,
         allowNull: false,
     })
     phone!: number;
