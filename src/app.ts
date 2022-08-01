@@ -13,22 +13,21 @@ if (!process.env.PORT) {
     process.exit(1);
 }
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors());
+app.use(bodyParser.json());
+
+
+app.use('/mobile', routes)
 
 //connect to database
-connection.sync({force: true, schema: ''}).then(() => {
-
-        app.use(cors());
-        //x-urlencoded
-        app.use(bodyParser.urlencoded({extended: true}));
-        app.use(bodyParser.json());
-
-        app.use('/mobile', routes)
+connection.sync({alter: true}).then(() => {
         console.log('Database connected successfully');
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on port ${process.env.PORT}`);
         })
     }
 ).catch(err => {
-        console.log(err.trace);
+        console.log(err);
     }
 );

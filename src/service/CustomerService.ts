@@ -23,4 +23,8 @@ export default class CustomerService implements ICustomerRepo {
     update(id: number, customer: ICustomer): Promise<ICustomer> | any {
         return Customer.update(customer, {where: {id}});
     }
+
+    getByEmail(email: string): Promise<ICustomer | null> {
+        return Customer.findOne({where: {email}});
+    }
 }

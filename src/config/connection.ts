@@ -25,6 +25,7 @@ const connection = new Sequelize({
     define: {
         timestamps: true,
         paranoid: true,
+        deletedAt:false
     }
 })
 console.log('Connected to database...');

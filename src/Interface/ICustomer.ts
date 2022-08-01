@@ -1,7 +1,3 @@
-import {Customer} from "../models/Customer";
-import {SequelizeHooks} from "sequelize/types/hooks";
-import {IntegerDataType} from "sequelize";
-
 interface ICustomer {
     id?: number;
     first_name: string;
@@ -10,6 +6,8 @@ interface ICustomer {
     email?: string;
     password: string;
     phone: string;
+    createdAt: Date;
+    updatedAt?: Date;
 }
 
 export default ICustomer;

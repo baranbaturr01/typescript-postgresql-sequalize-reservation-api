@@ -1,4 +1,4 @@
-import {Table, Model, Column, DataType} from "sequelize-typescript";
+import {Column, DataType, Model, Table} from "sequelize-typescript";
 import ICustomer from "../Interface/ICustomer";
 
 @Table({
@@ -28,12 +28,14 @@ export default class Customer extends Model<Customer> implements ICustomer {
     @Column({
         type: DataType.STRING,
         allowNull: false,
+        unique: true,
     })
     username!: string;
 
     @Column({
         type: DataType.STRING,
         allowNull: true,
+        unique: true,
     })
     email!: string;
 
@@ -48,5 +50,17 @@ export default class Customer extends Model<Customer> implements ICustomer {
         allowNull: false,
     })
     phone!: string;
+
+    @Column({
+        type: DataType.DATE,
+        allowNull: true,
+    })
+    createdAt!: Date;
+
+    @Column({
+        type: DataType.DATE,
+        allowNull: true,
+    })
+    updatedAt!: Date;
 }
 

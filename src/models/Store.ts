@@ -1,5 +1,4 @@
-import {Table, Model, Column, DataType, Scopes} from "sequelize-typescript";
-import {Customer} from "./Customer";
+import {Column, DataType, Model, Table} from "sequelize-typescript";
 
 @Table({
     tableName: "stores",
