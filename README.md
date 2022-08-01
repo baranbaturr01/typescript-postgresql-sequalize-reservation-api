@@ -33,5 +33,10 @@
 **9)** Yapılan bu işlemleri her kod değişikliğinde tek tek yapmak maliyetli olacağından dolayı bu işleri otomatize edecek bir script yazıyoruz. Burda kullandığımız concurrently paketi aynı anda birden fazla komut çalıştırmak için kullanıyoruz. nodemon paketini ise kodumuzda bir değişiklik olduğunda bunu algılayıp projeyi yeniden çalıştırmak için kullanıyoruz. dev komutunu çalıştırdığımızda önce yazdığımız typescript kodlarını javascript koduna derleyip daha sonra derlenen bu kodu nodemon ile çalıştırıyoruz.  Bu sayede kodumuzda değişiklik yaptığımızda otomatik olarak proje tekrar çalıştırılacaktır.
 
 
+### Proje Başlatmak için
+- `npm run dev` for build 
+- `docker-compose up` for docker compose
+
+
     []: # Language: typescript
     []: # Path: src/index.ts

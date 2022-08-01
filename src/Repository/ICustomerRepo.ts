@@ -6,7 +6,7 @@ export default interface ICustomerRepo {
 
     getById(id: number): Promise<ICustomer> | any;
 
-    create(customer: ICustomer): Promise<ICustomer>;
+    register(customer: ICustomer): Promise<ICustomer>;
 
     update(id: number, customer: ICustomer): Promise<ICustomer>;
 

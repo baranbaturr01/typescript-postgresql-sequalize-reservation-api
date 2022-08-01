@@ -1,40 +1,54 @@
 import CustomerService from "../../service/CustomerService";
 import {Request, Response} from "express";
+import isEmpty from "is-empty";
 
 const customerService = new CustomerService();
 const utils = require('../../libs/utils');
 
 module.exports = (req: Request, res: Response) => {
-    customerService.getByEmail(req.body.email).then(customer => {
-        if (!customer) {
-            return res.status(404).json({
-                code: 404,
-                message: "invalid email or password"
-            })
-        }
 
-        utils.comparePassword(req.body.password, customer.password, (err: Error, isMatch: boolean) => {
-            if (err) {
-                return res.status(500).json({
-                    code: 500,
-                    message: err.message
+    const email = req.body.email;
+    const password = req.body.password;
+
+    if (isEmpty(email) || isEmpty(password)) {
+        return res.status(400).json({
+            message: "Missing required fields"
+        });
+    }
+
+    return customerService.getByEmail(email).then(customer => {
+
+            if (!customer) {
+                return res.status(404).json({
+                    code: 404,
+                    message: "invalid email or password"
                 })
             }
+            const hashedPassword = customer.password
 
-            if (isMatch) {
+            return utils.comparePassword(password, hashedPassword).then((isMatch: boolean) => {
+
+                if (!isMatch) {
+                    return res.status(404).json({
+                        code: 404,
+                        message: "invalid email or password"
+                    })
+                }
+                const token=utils.generateToken(customer.id);
+
                 return res.json({
                     success: true,
-                    customer: customer
+                    customer: token
                 })
-            }
 
-            return res.status(404).json({
-                code: 404,
-                message: "invalid email or password"
+            }).catch((err: Error) => {
+                res.status(500).json({
+                    code: 500,
+                    message: err.message,
+                })
             })
-
-        })
-    }).catch(err => {
+        }
+    ).catch(err => {
         return res.status(500).json({
             code: 500,
             message: err.message

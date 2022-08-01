@@ -38,7 +38,6 @@ export default class Customer extends Model<Customer> implements ICustomer {
         unique: true,
     })
     email!: string;
-
     @Column({
         type: DataType.STRING,
         allowNull: false,
