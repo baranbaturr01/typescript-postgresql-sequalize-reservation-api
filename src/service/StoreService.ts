@@ -1,6 +1,7 @@
 import IStoresRepo from "../Repository/IStoresRepo";
 import IStores from "../Interface/IStores";
 import Store from "../models/Store";
+import Customer from "../models/Customer";
 
 export default class StoreService implements IStoresRepo {
 
@@ -26,7 +27,12 @@ export default class StoreService implements IStoresRepo {
     }
 
     getByCustomerId(customerId: number): Promise<IStores> | any {
-        const store = Store.findOne({where: {customer_id: customerId}});
+
+        Store.hasMany(Customer, {foreignKey: "id"})
+        Store.belongsTo(Customer, {foreignKey: "customer_id"})
+        const store = Store.findOne({where: {customer_id: customerId},include: [Customer]});
+
+        console.log(store)
         if (!store) {
             throw new Error("Store not found");
         }

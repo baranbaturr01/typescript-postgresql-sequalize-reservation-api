@@ -1,9 +1,11 @@
-import {Column, DataType, Model, Table} from "sequelize-typescript";
+import {Association, BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript";
+import Customer from "./Customer";
 
 @Table({
     tableName: "stores",
     timestamps: true,
 })
+
 export default class Store extends Model<Store> {
 
     @Column({
@@ -13,6 +15,7 @@ export default class Store extends Model<Store> {
     })
     id!: number;
 
+    @ForeignKey(() => Customer)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
@@ -30,7 +33,7 @@ export default class Store extends Model<Store> {
         allowNull: false,
     })
     lng!: number;
+    //
+    // @HasOne(() => Customer, "id") customer!: Customer
+    // @BelongsTo(() => Store, "customer_id") store!: Store
 }
-
-
-// Store.belongsTo(Customer, {foreignKey: 'customer_id', targetKey: 'id'});

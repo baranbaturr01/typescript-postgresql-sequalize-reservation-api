@@ -13,7 +13,10 @@ routes.post('/user/register', require("../controller/user/register"));
 routes.post('/user/login', require("../controller/user/login"));
 
 // Store routes
-routes.post('/store/add', require("../controller/store/add"));
+routes.post('/store/add', require('../middleware/authendicate'), require("../controller/store/add"));
+routes.post('/store/list-by-customer-id', require('../middleware/authendicate'), require("../controller/store/list-by-customer-id"));
+
+
 
 
 module.exports = routes;

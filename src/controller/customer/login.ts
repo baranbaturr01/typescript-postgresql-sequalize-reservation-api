@@ -6,7 +6,6 @@ const customerService = new CustomerService();
 const utils = require('../../libs/utils');
 
 module.exports = (req: Request, res: Response) => {
-
     const username = req.body.username;
     const password = req.body.password;
 

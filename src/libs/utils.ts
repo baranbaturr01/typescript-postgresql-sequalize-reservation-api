@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import jwt, {JwtPayload} from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 
@@ -13,13 +13,12 @@ module.exports = {
 
     jwtDecode: (token: string) => {
 
-        return jwt.verify(token, process.env.SECRET_KEY!, (err, decoded) => {
+        const decoded = jwt.verify(token, process.env.SECRET_KEY!) as JwtPayload;
 
-            if (err) {
-                return null;
-            }
-            return decoded;
-        });
+        if (!decoded) {
+            throw new Error('Invalid token');
+        }
+        return decoded.id;
     },
 
     /**

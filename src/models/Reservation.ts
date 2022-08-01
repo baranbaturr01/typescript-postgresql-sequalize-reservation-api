@@ -1,4 +1,6 @@
-import {Table, Model, Column, DataType} from "sequelize-typescript";
+import {Table, Model, Column, DataType, BelongsTo} from "sequelize-typescript";
+import User from "./User";
+import Store from "./Store";
 
 @Table({
     tableName: "reservations",
@@ -37,6 +39,9 @@ export default class Reservation extends Model<Reservation> {
         allowNull: false,
     })
     time!: Date;
+
+    @BelongsTo(() => User, "user_id") user!: User;
+    @BelongsTo(() => Store, "store_id") store!: Store;
 }
 // Reservation.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id'});
 // Reservation.belongsTo(Store, {foreignKey: 'store_id', targetKey: 'id'});

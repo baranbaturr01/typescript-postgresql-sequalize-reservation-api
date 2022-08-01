@@ -3,13 +3,13 @@ import isEmpty from "is-empty";
 import {Request, Response} from "express";
 
 const storeService = new StoreService();
-
 module.exports = (req: Request, res: Response) => {
 
-    const customerId = req.body.customer_id;
-    const lat = req.body.lat;
-    const lng = req.body.lng;
+    const customerId = req.id
+    const lat = req.body.lat
+    const lng = req.body.lng
 
+    console.log(customerId, lat, lng)
 
     if (isEmpty(customerId) || isEmpty(lat) || isEmpty(lng)) {
         res.status(400).json({
@@ -28,7 +28,6 @@ module.exports = (req: Request, res: Response) => {
 
         res.json({
             success: true,
-            store: store,
         })
 
     }).catch((err: Error) => {
