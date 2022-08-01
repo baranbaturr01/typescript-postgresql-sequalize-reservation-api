@@ -7,16 +7,16 @@ const utils = require('../../libs/utils');
 
 module.exports = (req: Request, res: Response) => {
 
-    const email = req.body.email;
+    const username = req.body.username;
     const password = req.body.password;
 
-    if (isEmpty(email) || isEmpty(password)) {
+    if (isEmpty(username) || isEmpty(password)) {
         return res.status(400).json({
             message: "Missing required fields"
         });
     }
 
-    return customerService.getByEmail(email).then(customer => {
+    return customerService.getByUsername(username).then(customer => {
 
             if (!customer) {
                 return res.status(404).json({
@@ -34,7 +34,7 @@ module.exports = (req: Request, res: Response) => {
                         message: "invalid email or password"
                     })
                 }
-                const token=utils.generateToken(customer.id);
+                const token = utils.generateToken(customer.id);
 
                 return res.json({
                     success: true,

@@ -13,4 +13,6 @@ export default interface ICustomerRepo {
     delete(id: number): Promise<void>;
 
     getByEmail(email: string): Promise<ICustomer | null>;
+
+    getByUsername(username: string): Promise<ICustomer | null>;
 }

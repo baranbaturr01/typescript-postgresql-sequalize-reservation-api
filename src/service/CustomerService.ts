@@ -13,18 +13,22 @@ export default class CustomerService implements ICustomerRepo {
     }
 
     async delete(id: number | any): Promise<void> {
-        await Customer.destroy({where: {id:id}});
+        await Customer.destroy({where: {id: id}});
     }
 
     async getById(id: number): Promise<Promise<ICustomer> | any> {
-        return await Customer.findOne({where: {id:id}});
+        return await Customer.findOne({where: {id: id}});
     }
 
     update(id: number, customer: ICustomer): Promise<ICustomer> | any {
-        return Customer.update(customer, {where: {id:id}});
+        return Customer.update(customer, {where: {id: id}});
     }
 
     async getByEmail(email: string): Promise<ICustomer | any> {
         return await Customer.findOne({where: {email: email}})
+    }
+
+    async getByUsername(username: string): Promise<ICustomer | any> {
+        return await Customer.findOne({where: {username: username}})
     }
 }
