@@ -36,6 +36,7 @@ module.exports = {
     cryptPassword: (password: string, salt: string) => {
         return bcrypt.hash(password, salt);
     },
+
     /**
      *
      * @param password
