@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import jwt, {JwtPayload} from 'jsonwebtoken';
-import dotenv from 'dotenv';
 
 
 module.exports = {
@@ -44,5 +43,9 @@ module.exports = {
      */
     comparePassword: (password: string, hashedPassword: string) => {
         return bcrypt.compare(password, hashedPassword)
+    },
+
+    generateForgotPasswordToken: (userId: string, code: string) => {
+        return jwt.sign({userId, code}, process.env.FORGOT_PASSWORD_KEY!)
     },
 }

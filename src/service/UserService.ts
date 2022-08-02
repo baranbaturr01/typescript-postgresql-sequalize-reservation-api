@@ -13,14 +13,17 @@ export default class UserService implements IUserRepo {
     }
 
     async getByEmail(email: string): Promise<IUser | null> {
-        return await User.findOne({where: {email: email}});
+        const user = await User.findOne({where: {email: email}})
+        console.log(user);
+        return user;
+        // return await User.findOne({where: {email: email}});
     }
 
     async getById(id: number): Promise<IUser | any> {
         return await User.findOne({where: {id: id}});
     }
 
-    async update(id: number, user: User): Promise<IUser | any> {
+    async update(id: number, user: any): Promise<IUser | any> {
         return await User.update(user, {where: {id: id}});
     }
 

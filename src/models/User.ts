@@ -1,4 +1,4 @@
-import {Table, Model, Column, DataType} from "sequelize-typescript";
+import {Column, DataType, Model, Table} from "sequelize-typescript";
 import IUser from "../Interface/IUser";
 
 @Table({
@@ -42,4 +42,16 @@ export default class User extends Model<User> implements IUser {
         allowNull: false,
     })
     phone!: number;
+
+    @Column({
+        type: DataType.DATE,
+        allowNull: true,
+    })
+    createdAt!: Date;
+
+    @Column({
+        type: DataType.DATE,
+        allowNull: true,
+    })
+    updatedAt!: Date;
 }

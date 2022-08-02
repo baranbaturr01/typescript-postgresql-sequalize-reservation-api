@@ -1,13 +1,14 @@
 import {Table, Model, Column, DataType, BelongsTo, ForeignKey} from "sequelize-typescript";
 import User from "./User";
 import Store from "./Store";
+import IReservation from "../Interface/IReservation";
 
 @Table({
     tableName: "reservations",
     timestamps: true,
 })
 
-export default class Reservation extends Model<Reservation> {
+export default class Reservation extends Model<Reservation> implements IReservation {
     @Column({
         type: DataType.INTEGER,
         primaryKey: true,

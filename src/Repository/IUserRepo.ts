@@ -1,7 +1,7 @@
 import IUser from '../Interface/IUser';
 
 export default interface IUserRepo {
-    
+
     getAll(): Promise<IUser[]>;
 
     getById(id: number): Promise<IUser> | any;
