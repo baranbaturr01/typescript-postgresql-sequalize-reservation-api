@@ -4,7 +4,7 @@ import Customer from "../models/Customer";
 
 export default class CustomerService implements ICustomerRepo {
 
-    async getAll(): Promise<ICustomer[]> {
+    public async getAll(): Promise<ICustomer[]> {
         return await Customer.findAll();
     }
 

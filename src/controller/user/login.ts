@@ -10,8 +10,7 @@ module.exports = (req: Request, res: Response) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    userService.getByEmail(email).then((user) => {
-
+   return userService.getByEmail(email).then((user) => {
 
         if (!user) {
             res.status(404).json({

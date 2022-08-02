@@ -2,7 +2,7 @@ import ICustomer from "../Interface/ICustomer";
 
 export default interface ICustomerRepo {
 
-    getAll(): Promise<ICustomer[]>;
+     getAll(): Promise<ICustomer[]>;
 
     getById(id: number): Promise<ICustomer> | any;
 

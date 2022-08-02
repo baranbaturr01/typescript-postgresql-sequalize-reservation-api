@@ -33,6 +33,8 @@ module.exports = (req: Request, res: Response) => {
 
         return userService.register(newUser).then(() => {
 
+            //@Todo: geriye token dönülecek
+
             res.json({
                 success: true,
             })

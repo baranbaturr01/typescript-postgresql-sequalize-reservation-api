@@ -6,12 +6,11 @@ const storeService = new StoreService();
 module.exports = (req: Request, res: Response) => {
 
     const customerId = req.id
+    const name= req.body.name;
     const lat = req.body.lat
     const lng = req.body.lng
-
-    console.log(customerId, lat, lng)
-
     if (isEmpty(customerId) || isEmpty(lat) || isEmpty(lng)) {
+
         res.status(400).json({
             code: 400,
             message: "Missing required fields"
@@ -20,6 +19,7 @@ module.exports = (req: Request, res: Response) => {
 
     const newStore = {
         customer_id: customerId,
+        name: name,
         lat: lat,
         lng: lng,
     }

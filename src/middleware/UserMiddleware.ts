@@ -1,5 +1,6 @@
 import express, {NextFunction, Request, Response} from "express";
 import isEmpty from "is-empty"
+import UserService from "../service/UserService";
 
 const utils = require("../libs/utils");
 
@@ -11,7 +12,9 @@ declare module "express" {
 }
 module.exports = (req: Request, res: Response, next: NextFunction) => {
 
-    const token: string | any = req.header("X-Token")
+    const userService = new UserService();
+
+    const token: string | any = req.header("X-User-Token")
 
     if (isEmpty(token)) {
         return res.status(401).json({
@@ -20,7 +23,20 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
         });
     }
 
-    req.id = utils.jwtDecode(token)
-    next()
+    const decode = utils.jwtDecode(token)
+
+    return userService.getById(decode).then(user => {
+
+        if (!user) {
+            res.status(404).json({
+                code: 404,
+                message: "User not found"
+            });
+        }
+        req.id = user.id;
+        next();
+    })
+
+
 }
 

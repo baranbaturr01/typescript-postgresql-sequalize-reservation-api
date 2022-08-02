@@ -5,12 +5,12 @@ import Customer from "../models/Customer";
 
 export default class StoreService implements IStoresRepo {
 
-    add(store: IStores | any): Promise<IStores> {
-        return Store.create(store);
+    async add(store: IStores | any): Promise<IStores> {
+        return await Store.create(store);
     }
 
-    getAll(): Promise<IStores[]> {
-        return Store.findAll();
+   async getAll(): Promise<IStores[]> {
+        return await Store.findAll();
     }
 
     delete(id: number): Promise<void> | any {
@@ -28,11 +28,9 @@ export default class StoreService implements IStoresRepo {
 
     getByCustomerId(customerId: number): Promise<IStores> | any {
 
-        Store.hasMany(Customer, {foreignKey: "id"})
         Store.belongsTo(Customer, {foreignKey: "customer_id"})
         const store = Store.findOne({where: {customer_id: customerId},include: [Customer]});
 
-        console.log(store)
         if (!store) {
             throw new Error("Store not found");
         }

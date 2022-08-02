@@ -15,13 +15,17 @@ export default class Store extends Model<Store> {
     })
     id!: number;
 
-    @ForeignKey(() => Customer)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
     customer_id!: number;
 
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    name!: string;
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
@@ -33,7 +37,4 @@ export default class Store extends Model<Store> {
         allowNull: false,
     })
     lng!: number;
-    //
-    // @HasOne(() => Customer, "id") customer!: Customer
-    // @BelongsTo(() => Store, "customer_id") store!: Store
 }

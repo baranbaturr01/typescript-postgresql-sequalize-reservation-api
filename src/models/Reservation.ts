@@ -1,4 +1,4 @@
-import {Table, Model, Column, DataType, BelongsTo} from "sequelize-typescript";
+import {Table, Model, Column, DataType, BelongsTo, ForeignKey} from "sequelize-typescript";
 import User from "./User";
 import Store from "./Store";
 
@@ -15,12 +15,14 @@ export default class Reservation extends Model<Reservation> {
     })
     id!: number;
 
+    @ForeignKey(() => User)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
     user_id!: number;
 
+    @ForeignKey(() => Store)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,

@@ -1,4 +1,5 @@
-import {Table, Model, Column, DataType} from "sequelize-typescript";
+import {Table, Model, Column, DataType, ForeignKey} from "sequelize-typescript";
+import Store from "./Store";
 
 @Table({
     tableName: "works",
@@ -13,6 +14,7 @@ export default class Work extends Model<Work> {
     })
     id!: number;
 
+    @ForeignKey(() => Store)
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
