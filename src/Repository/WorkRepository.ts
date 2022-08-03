@@ -5,8 +5,9 @@ import Work from "../models/Work";
 
 export default class WorkRepository implements WorkService {
 
-    async add(work: any): Promise<IWork> {
-        return await Work.create(work);
+    async add(work: IWork | any): Promise<Work> {
+        Work.belongsTo(Store, {foreignKey: "store_id"});
+        return await Work.create(work, {include: [Store]});
     }
 
     async delete(id: number): Promise<void> {

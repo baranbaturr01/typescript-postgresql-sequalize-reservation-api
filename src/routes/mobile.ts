@@ -30,6 +30,6 @@ router.post('/work/add', require('../middleware/CustomerMiddleware'), require(".
 //Reservation router
 router.post('/reservation/add', require('../middleware/UserMiddleware'), require("../controller/reservation/add"));
 router.post("/reservation/get-by-user-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-user-id"));
-
+router.post("/reservation/get-by-store-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-store-id"));
 
 module.exports = router;

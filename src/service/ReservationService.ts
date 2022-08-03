@@ -27,4 +27,10 @@ export class ReservationService implements IReservationRepo {
         return Reservation.findOne({where: {user_id: userId}, include: [User, Store]});
     }
 
+    getByStoreId(storeId: number): Promise<Reservation[] | null> {
+        Reservation.belongsTo(User, {foreignKey: "user_id"});
+        Reservation.belongsTo(Store, {foreignKey: "store_id"});
+        return Reservation.findAll({where: {store_id: storeId}, include: [User, Store]});
+    }
+
 }

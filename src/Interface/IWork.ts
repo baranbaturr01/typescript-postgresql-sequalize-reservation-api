@@ -1,5 +1,5 @@
 export default interface IWork {
-    id: number;
+    id?: number;
     store_id: number;
     start_date: Date;
     end_date: Date;

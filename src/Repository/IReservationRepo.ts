@@ -10,4 +10,6 @@ export default interface IReservationRepo {
     getByUserIdAndStoreId(userId: number, date: Date): Promise<Reservation | null>;
 
     getByUserId(userId: number): Promise<Reservation | null>;
+
+    getByStoreId(storeId: number): Promise<Reservation[] | null>;
 }
