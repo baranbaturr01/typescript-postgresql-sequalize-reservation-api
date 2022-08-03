@@ -9,9 +9,10 @@ module.exports = (req: Request, res: Response) => {
 
     const email = req.body.email;
     const password = req.body.password;
-        
-    return userService.getByEmail(email).then((user) => {
-        console.log(user)
+
+    return userService.getByEmail(email).then(user => {
+
+
         if (!user) {
             res.status(404).json({
                 code: 404,
@@ -34,10 +35,10 @@ module.exports = (req: Request, res: Response) => {
                 token: token,
 
             });
-        }).catch((err: Error) => {
-            res.status(500).send(err.message)
         });
+        
     }).catch((err: Error) => {
+
         res.status(500).json({
             code: 500,
             message: err.message,

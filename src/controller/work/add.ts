@@ -1,8 +1,10 @@
-import {Request, Response, NextFunction} from "express";
+import {NextFunction, Request, Response} from "express";
 import isEmpty from "is-empty";
+import WorkRepository from "../../Repository/WorkRepository";
 
 
-export default (req: Request, res: Response, next: NextFunction) => {
+const workService = new WorkRepository();
+module.exports = (req:Request, res: Response) => {
 
     const storeId = req.body.store_id
     const startDate = req.body.start_date
@@ -16,6 +18,22 @@ export default (req: Request, res: Response, next: NextFunction) => {
         });
     }
 
+    const addedWork = {
+        store_id: storeId,
+        start_date: startDate,
+        end_date: endDate,
+        work_space: workSpace
+    }
 
+    return workService.add(addedWork).then(work => {
+        res.json({
+            success: true,
+        })
+    }).catch(err => {
+        res.status(500).json({
+            code: 500,
+            message: err.message
+        });
+    })
 
 }

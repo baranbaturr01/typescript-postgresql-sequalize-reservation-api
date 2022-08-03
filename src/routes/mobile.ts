@@ -13,7 +13,6 @@ router.post("/customer/set-new-password", require("../controller/customer/set-ne
 // User router
 router.post('/user/register', require("../controller/user/register"));
 router.post('/user/login', require("../controller/user/login"));
-//@todo:add forgot/password
 router.post('/user/forgot-password', require("../controller/user/forgot-password"));
 router.post('/user/set-password', require("../controller/user/set-password"));
 
@@ -26,11 +25,11 @@ router.post('/store/list-by-customer-id', require('../middleware/CustomerMiddlew
 router.post('/user/store/list', require('../middleware/UserMiddleware'), require("../controller/store/list-all"));
 
 //Work router
-
-// router.post('/work/add', require('../middleware/CustomerMiddleware'), require("../controller/work/add"));
+router.post('/work/add', require('../middleware/CustomerMiddleware'), require("../controller/work/add"));
 
 //Reservation router
-// router.post('/reservation/add', require('../middleware/UserMiddleware'), require("../controller/reservation/add"));
+router.post('/reservation/add', require('../middleware/UserMiddleware'), require("../controller/reservation/add"));
+router.post("/reservation/get-by-user-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-user-id"));
 
 
 module.exports = router;
