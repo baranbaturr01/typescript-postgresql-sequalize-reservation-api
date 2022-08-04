@@ -31,10 +31,14 @@ export default class Store extends Model<Store> {
         allowNull: false,
     })
     lat!: number;
-
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
     })
     lng!: number;
+    @Column({
+        type: DataType.ARRAY(DataType.JSON),
+        allowNull: true,
+    })
+    work_time!:[{}]
 }

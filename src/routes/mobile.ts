@@ -1,4 +1,4 @@
-import express from "express";
+import express, {Request,Response,NextFunction} from "express";
 
 const router = express.Router();
 
@@ -25,7 +25,9 @@ router.post('/store/list-by-customer-id', require('../middleware/CustomerMiddlew
 router.post('/user/store/list', require('../middleware/UserMiddleware'), require("../controller/store/list-all"));
 
 //Work router
-router.post('/work/add', require('../middleware/CustomerMiddleware'), require("../controller/work/add"));
+router.post('/work/add', require('../middleware/CustomerMiddleware'), require("../controller/work/add"))
+router.post('/work/get-work-list', require('../middleware/CustomerMiddleware'), require("../controller/work/get-work-list"));
+
 
 //Reservation router
 router.post('/reservation/add', require('../middleware/UserMiddleware'), require("../controller/reservation/add"));

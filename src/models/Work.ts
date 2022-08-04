@@ -1,5 +1,6 @@
 import {Table, Model, Column, DataType, ForeignKey} from "sequelize-typescript";
 import Store from "./Store";
+import Customer from "./Customer";
 
 @Table({
     tableName: "works",
@@ -20,6 +21,13 @@ export default class Work extends Model<Work> {
         allowNull: false,
     })
     store_id!: number;
+
+    @ForeignKey(() => Customer)
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: false,
+    })
+    customer_id!: number;
 
     @Column({
         type: DataType.TIME,

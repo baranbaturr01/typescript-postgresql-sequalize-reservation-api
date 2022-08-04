@@ -1,19 +1,45 @@
 import IWork from "../Interface/IWork";
 import Work from "../models/Work";
+import IWorkRepository from "../Repository/IWorkRepository";
 import Store from "../models/Store";
 
-export default interface WorkService {
+export default class WorkService implements IWorkRepository {
 
-    add(work: IWork | any): Promise<IWork>
+    async add(work: IWork | any): Promise<Work> {
+        return await Work.create(work);
+    }
 
-    getAll(): Promise<IWork[]>
+    async delete(id: number): Promise<void | any> {
+        return Work.destroy({where: {id: id}});
+    }
 
-    delete(id: number): Promise<void> | any
+    async getAll(): Promise<IWork[]> {
+        return await Work.findAll();
+    }
 
-    getById(id: number): Promise<IWork>
+    async getById(id: number): Promise<IWork | any> {
+        return Work.findOne({where: {id: id}});
+    }
 
-    update(id: number, work: IWork): Promise<IWork>
+    async getByStoreId(storeId: number): Promise<IWork | any> {
+        return Work.findOne({where: {store_id: storeId}});
+    }
 
-    getByStoreId(storeId: number): Promise<IWork>
+    async update(id: number, work: IWork): Promise<IWork | any> {
+        return Work.update(work, {where: {id: id}});
+    }
+
+    async getWorkObjectByCustomerAndStoreId(customerId: number, storeId: number): Promise<IWork | any> {
+
+        Work.belongsTo(Store, {foreignKey: "store_id"})
+
+        const work = Work.findOne({where: {customer_id: customerId, store_id: storeId}, include: [Store]});
+
+        if (!work) {
+            throw new Error("Work not found");
+        }
+        return work;
+    }
+
 
 }

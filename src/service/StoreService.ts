@@ -26,6 +26,10 @@ export default class StoreService implements IStoresRepo {
         return Store.update(store, {where: {id: id}});
     }
 
+    updateWorkTimeColumn(id: number, workTime: any): Promise<IStores> | any {
+        return Store.update({work_time:workTime}, {where: {id: id}});
+    }
+
     getByCustomerId(customerId: number): Promise<IStores> | any {
 
         Store.belongsTo(Customer, {foreignKey: "customer_id"})

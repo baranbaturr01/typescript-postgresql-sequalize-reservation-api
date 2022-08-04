@@ -14,6 +14,7 @@ module.exports = (req: Request, res: Response) => {
                     store_name: store.name,
                     store_latitude: store.lat,
                     store_longitude: store.lng,
+                    store_work_time: store.work_time
                 }
             })
         })

@@ -14,4 +14,5 @@ export default interface IStoresRepo {
 
     getByCustomerId(customerId: number): Promise<IStores>;
 
+
 }

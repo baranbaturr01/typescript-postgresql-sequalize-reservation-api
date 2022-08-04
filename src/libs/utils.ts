@@ -6,7 +6,7 @@ module.exports = {
 
     generateToken: (id: string) => {
 
-        return jwt.sign({id: id}, process.env.SECRET_KEY!, {expiresIn: '1h'})
+        return jwt.sign({id: id}, process.env.SECRET_KEY!, {expiresIn: '1w'})
 
     },
 
