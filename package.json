@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "start": "nodemon build/app.js",
+    "start": "concurrently \"tsc --watch\" \"nodemon build/app.js\"",
     "dev": "concurrently \"tsc --watch\" \"nodemon build/app.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "tsc"
