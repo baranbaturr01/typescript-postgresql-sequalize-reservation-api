@@ -20,11 +20,12 @@ app.use(bodyParser.json());
 
 app.use('/mobile', routes)
 
+const PORT = process.env.PORT  || 3000;
 //connect to database
 connection.sync({alter: true}).then(() => {
         console.log('Database connected successfully');
-        app.listen(process.env.PORT, () => {
-            console.log(`Server is running on port ${process.env.PORT}`);
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
         })
     }
 ).catch(err => {

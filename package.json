@@ -7,7 +7,7 @@
     "start": "nodemon build/app.js",
     "dev": "concurrently \"tsc --watch\" \"nodemon build/app.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "tsc"
+    "postinstall": "tsconfig.json"
   },
   "repository": {
     "type": "git",

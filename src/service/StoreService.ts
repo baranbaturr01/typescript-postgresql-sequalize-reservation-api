@@ -9,7 +9,7 @@ export default class StoreService implements IStoresRepo {
         return await Store.create(store);
     }
 
-   async getAll(): Promise<IStores[]> {
+    async getAll(): Promise<IStores[]> {
         return await Store.findAll();
     }
 
@@ -27,13 +27,13 @@ export default class StoreService implements IStoresRepo {
     }
 
     updateWorkTimeColumn(id: number, workTime: any): Promise<IStores> | any {
-        return Store.update({work_time:workTime}, {where: {id: id}});
+        return Store.update({work_time: workTime}, {where: {id: id}});
     }
 
     getByCustomerId(customerId: number): Promise<IStores> | any {
 
         Store.belongsTo(Customer, {foreignKey: "customer_id"})
-        const store = Store.findOne({where: {customer_id: customerId},include: [Customer]});
+        const store = Store.findOne({where: {customer_id: customerId}, include: [Customer]});
 
         if (!store) {
             throw new Error("Store not found");
