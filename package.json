@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "nodemon build/app.js",
     "dev": "concurrently \"tsc --watch\" \"nodemon build/app.js\"",
