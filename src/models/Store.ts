@@ -1,5 +1,4 @@
-import {Association, BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table} from "sequelize-typescript";
-import Customer from "./Customer";
+import {Column, DataType, Model, Table} from "sequelize-typescript";
 
 @Table({
     tableName: "stores",
@@ -27,18 +26,20 @@ export default class Store extends Model<Store> {
     })
     name!: string;
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.FLOAT,
         allowNull: false,
     })
     lat!: number;
     @Column({
-        type: DataType.INTEGER,
+        type: DataType.FLOAT,
         allowNull: false,
     })
     lng!: number;
     @Column({
-        type: DataType.ARRAY(DataType.JSON),
+        type: DataType.ARRAY(DataType.JSON()),
         allowNull: true,
     })
-    work_time!:[{}]
+    work_time!: {
+
+    };
 }

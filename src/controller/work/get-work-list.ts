@@ -3,7 +3,6 @@ import isEmpty from "is-empty";
 import WorkService from "../../service/WorkService";
 import StoreService from "../../service/StoreService";
 import Store from "../../models/Store";
-import IStores from "../../Interface/IStores";
 
 const workService = new WorkService();
 const storeService = new StoreService()
@@ -31,6 +30,17 @@ const calculateWorkSpace: string[] | any = (startDate: string, endDate: string, 
     return times
 }
 
+const getDate = () => {
+    let date: string[] = [];
+    for (let i = 0; i < 7; i++) {
+        const tomorrowDate: Date = new Date(Date.now());
+        tomorrowDate.setDate(tomorrowDate.getDate() + i);
+        const tomorrow = tomorrowDate.getFullYear() + "-" + (tomorrowDate.getMonth() + 1) + "-" + tomorrowDate.getDate();
+        date.push(tomorrow);
+    }
+    return date;
+}
+
 
 module.exports = (req: Request, res: Response, next: NextFunction) => {
 
@@ -42,26 +52,37 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
         const endDate = work.end_date
         const workSpace = work.work_space
 
+
+        const data = getDate().map(day => {
+            return {
+                date: day,
+                reservation: calculateWorkSpace(startDate, endDate, workSpace)
+            }
+        })
+
+
+        // console.log(getDate())
+
         const times = calculateWorkSpace(startDate, endDate, workSpace)
         if (!isEmpty(work.Store.work_time)) {
             return res.json({
                 success: true,
-                reservationList: calculateWorkSpace(startDate, endDate, workSpace)
+                reservationList: data
             })
         }
-        //json to parse times
+
         const store = new Store()
         store.id = work.Store.id
         store.name = work.Store.name
         store.lng = work.Store.lng
         store.lat = work.Store.lat
         store.customer_id = work.Store.customer_id
-        store.work_time = times
+        store.work_time = data
 
         return storeService.updateWorkTimeColumn(store.id, store.work_time).then(() => {
             return res.json({
                 success: true,
-                reservationList: calculateWorkSpace(startDate, endDate, workSpace)
+                reservationList: data
             })
         })
     }).catch(err => {

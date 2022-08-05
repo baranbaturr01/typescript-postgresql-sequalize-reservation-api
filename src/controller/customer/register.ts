@@ -30,10 +30,12 @@ module.exports = (req: Request, res: Response) => {
             phone: phone,
         };
 
-        return customerService.register(newCustomer).then(() => {
+        return customerService.register(newCustomer).then((customer) => {
+            const token = utils.generateToken(customer?.id?.toString());
 
             res.json({
                 success: true,
+                token: token
             })
         })
 
