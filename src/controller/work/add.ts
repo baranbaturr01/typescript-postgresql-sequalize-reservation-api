@@ -4,7 +4,6 @@ import IWork from "../../Interface/IWork";
 import Work from "../../models/Work";
 import WorkService from "../../service/WorkService";
 
-import dateParse from "../../script/DateParse";
 
 const workService = new WorkService();
 module.exports = (req: Request, res: Response) => {
@@ -14,6 +13,7 @@ module.exports = (req: Request, res: Response) => {
     const startDate = req.body.start_date
     const endDate = req.body.end_date
     const workSpace = req.body.work_space
+
     if (isEmpty(storeId) || isEmpty(startDate) || isEmpty(endDate) || isEmpty(workSpace)) {
 
         res.status(400).json({

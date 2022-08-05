@@ -12,7 +12,6 @@ const host: string | undefined = process.env.DB_HOST
 const username: string | undefined = process.env.DB_USER
 const password: string | undefined = process.env.DB_PASS
 const database: string | undefined = process.env.DB_NAME
-console.log(host, "host");
 const connection = new Sequelize({
     dialect: 'postgres',
     host: host,
