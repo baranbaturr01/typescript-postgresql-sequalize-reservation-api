@@ -7,10 +7,7 @@
     "node": "16.x"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "node build/app.js",
-    "tsc": "./node_modules/typescript/bin/tsc",
-    "postinstall": "npm run build",
+    "start": "tsc && node build/app.js",
     "dev": "concurrently \"tsc --watch\" \"nodemon build/app.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
