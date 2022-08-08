@@ -12,11 +12,12 @@ const host: string | undefined = process.env.PROD_DB_HOST
 const username: string | undefined = process.env.PROD_DB_USER
 const password: string | undefined = process.env.PROD_DB_PASS
 const database: string | undefined = process.env.PROD_DB_NAME
+const port: any = process.env.PROD_DB_PORT
 console.log(host, username, password, database);
 const connection = new Sequelize({
     dialect: 'postgres',
     host: host,
-    port: 5430,
+    port: port,
     username: username,
     password: password,
     database: database,
