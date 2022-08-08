@@ -8,10 +8,11 @@ import Customer from "../models/Customer";
 
 config()
 console.log('Connecting to database...');
-const host: string | undefined = process.env.DB_HOST
-const username: string | undefined = process.env.DB_USER
-const password: string | undefined = process.env.DB_PASS
-const database: string | undefined = process.env.DB_NAME
+const host: string | undefined = process.env.PROD_DB_HOST
+const username: string | undefined = process.env.PROD_DB_USER
+const password: string | undefined = process.env.PROD_DB_PASS
+const database: string | undefined = process.env.PROD_DB_NAME
+console.log(host, username, password, database);
 const connection = new Sequelize({
     dialect: 'postgres',
     host: host,
