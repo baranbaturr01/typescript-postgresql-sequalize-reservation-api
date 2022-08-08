@@ -14,7 +14,7 @@ module.exports = (req: Request, res: Response) => {
 
 
         if (!user) {
-            res.status(404).json({
+            return res.status(404).json({
                 code: 404,
                 message: "invalid email or password"
             });
@@ -22,7 +22,7 @@ module.exports = (req: Request, res: Response) => {
 
         return utils.comparePassword(password, user!.password).then((isMatch: boolean) => {
             if (!isMatch) {
-                res.status(401).json({
+               return res.status(401).json({
                     code: 401,
                     message: "Invalid email or password"
                 });
@@ -30,7 +30,7 @@ module.exports = (req: Request, res: Response) => {
 
             const token = utils.generateToken(user?.id?.toString());
 
-            res.json({
+            return res.json({
                 success: true,
                 token: token,
 
@@ -39,7 +39,7 @@ module.exports = (req: Request, res: Response) => {
         
     }).catch((err: Error) => {
 
-        res.status(500).json({
+       return  res.status(500).json({
             code: 500,
             message: err.message,
         })

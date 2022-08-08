@@ -15,7 +15,7 @@ module.exports = (req: Request, res: Response) => {
     const phone = req.body.phone;
 
     if (isEmpty(fistName) || isEmpty(lastName) || isEmpty(email) || isEmpty(username) || isEmpty(password) || isEmpty(phone)) {
-        res.status(400).json({
+        return res.status(400).json({
             message: "Missing required fields"
         });
     }
@@ -40,7 +40,7 @@ module.exports = (req: Request, res: Response) => {
         })
 
     }).catch((err: Error) => {
-        res.status(500).json({
+        return res.status(500).json({
             code: 500,
             message: err.message,
 

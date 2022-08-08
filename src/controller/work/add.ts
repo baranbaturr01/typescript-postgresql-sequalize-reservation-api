@@ -16,7 +16,7 @@ module.exports = (req: Request, res: Response) => {
 
     if (isEmpty(storeId) || isEmpty(startDate) || isEmpty(endDate) || isEmpty(workSpace)) {
 
-        res.status(400).json({
+        return res.status(400).json({
             code: 400,
             message: "Missing required fields"
         });
@@ -36,7 +36,7 @@ module.exports = (req: Request, res: Response) => {
             success: true,
         })
     }).catch(err => {
-        res.status(500).json({
+        return res.status(500).json({
             code: 500,
             message: err.message
         });

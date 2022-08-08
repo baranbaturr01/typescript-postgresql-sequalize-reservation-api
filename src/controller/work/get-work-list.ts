@@ -86,7 +86,7 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
             })
         })
     }).catch(err => {
-        res.status(500).json({
+        return res.status(500).json({
             code: 500,
             message: err.message
         });

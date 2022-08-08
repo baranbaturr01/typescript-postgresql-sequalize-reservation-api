@@ -26,7 +26,7 @@ module.exports = (req: Request, res: Response) => {
 
         console.log(code)
     }).catch((err: Error) => {
-        res.status(500).json({
+        return res.status(500).json({
             code: 500,
             message: err.message,
         })

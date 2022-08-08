@@ -28,7 +28,7 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
     return userService.getById(decode).then(user => {
 
         if (!user) {
-            res.status(404).json({
+            return res.status(404).json({
                 code: 404,
                 message: "User not found"
             });

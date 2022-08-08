@@ -13,7 +13,7 @@ module.exports = (req: Request, res: Response) => {
     const district = req.body.district
     if (isEmpty(customerId) || isEmpty(lat) || isEmpty(lng) || isEmpty(city) || isEmpty(district)) {
 
-        res.status(400).json({
+        return res.status(400).json({
             code: 400,
             message: "Missing required fields(lat,lng,city,district)",
         });
@@ -35,7 +35,7 @@ module.exports = (req: Request, res: Response) => {
         })
 
     }).catch((err: Error) => {
-        res.status(500).json({
+        return res.status(500).json({
             code: 500,
             message: err.message,
         })
