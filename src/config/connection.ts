@@ -16,13 +16,15 @@ const port: any = process.env.PROD_DB_PORT
 console.log(host, username, password, database);
 const connection = new Sequelize({
     dialect: 'postgres',
+    dialectOptions: {
+        ssl: true
+    },
     host: host,
     port: port,
     username: username,
     password: password,
     database: database,
     models: [User, Store, Work, Reservation, Customer],
-    ssl: true,
     logging: true,
     define: {
         timestamps: true,
