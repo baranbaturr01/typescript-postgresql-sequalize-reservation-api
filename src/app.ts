@@ -22,7 +22,7 @@ app.use('/mobile', routes)
 
 const PORT = process.env.PORT  || 3000;
 //connect to database
-connection.sync({alter: true}).then(() => {
+connection.sync({force: true}).then(() => {
         console.log('Database connected successfully');
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
