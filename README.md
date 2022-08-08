@@ -1,3 +1,6 @@
+## Heroku End-Point Base Url
+- https://reservation-api-v1.herokuapp.com/ 
+
 # Using Typescript and Create a Reservation App
 
 
