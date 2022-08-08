@@ -22,7 +22,8 @@ const connection = new Sequelize({
     password: password,
     database: database,
     models: [User, Store, Work, Reservation, Customer],
-    logging: false,
+    ssl: true,
+    logging: true,
     define: {
         timestamps: true,
     }
