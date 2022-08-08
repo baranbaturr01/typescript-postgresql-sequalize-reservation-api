@@ -64,7 +64,7 @@
 ### Proje Başlatmak için
 - `npm run dev` for build 
 - `docker-compose up` for docker compose
-
+ 
 
     []: # Language: typescript
     []: # Path: src/index.ts
