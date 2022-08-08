@@ -31,7 +31,7 @@ router.post('/work/get-work-list', require('../middleware/CustomerMiddleware'), 
 
 //Reservation router
 router.post('/reservation/add', require('../middleware/UserMiddleware'), require("../controller/reservation/add"));
-router.post("/reservation/get-reservation-list-by-user-id`", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-user-id"));
+router.post("/reservation/get-reservation-list-by-user-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-user-id"));
 router.post("/reservation/get-reservation-list-by-store-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-store-id"));
 
 module.exports = router;
