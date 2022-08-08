@@ -13,7 +13,6 @@ const username: string | undefined = process.env.PROD_DB_USER
 const password: string | undefined = process.env.PROD_DB_PASS
 const database: string | undefined = process.env.PROD_DB_NAME
 const port: any = process.env.PROD_DB_PORT
-console.log(host, username, password, database);
 const connection = new Sequelize({
     dialect: 'postgres',
     dialectOptions: {
@@ -28,7 +27,7 @@ const connection = new Sequelize({
     password: password,
     database: database,
     models: [User, Store, Work, Reservation, Customer],
-    logging: true,
+    logging: false,
     define: {
         timestamps: true,
     }

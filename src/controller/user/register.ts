@@ -16,7 +16,7 @@ module.exports = (req: Request, res: Response) => {
 
 
     if (isEmpty(fistName) || isEmpty(lastName) || isEmpty(email) || isEmpty(password) || isEmpty(phone)) {
-        res.status(400).json({
+      return  res.status(400).json({
             code: 400,
             message: "Missing required fields"
         });
