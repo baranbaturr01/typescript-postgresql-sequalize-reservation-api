@@ -5,4 +5,6 @@ export default interface IStores {
     work_time: {};
     lat: number;
     lng: number;
+    city: string;
+    district: string;
 }

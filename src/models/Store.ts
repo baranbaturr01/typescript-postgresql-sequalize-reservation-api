@@ -39,7 +39,15 @@ export default class Store extends Model<Store> {
         type: DataType.ARRAY(DataType.JSON()),
         allowNull: true,
     })
-    work_time!: {
-
-    };
+    work_time!: {};
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    city!: string;
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    district!: string;
 }
