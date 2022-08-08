@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "tsc --build && node build/app.js",
+    "start": "node build/app.js",
     "dev": "concurrently \"tsc --watch\" \"nodemon build/app.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
