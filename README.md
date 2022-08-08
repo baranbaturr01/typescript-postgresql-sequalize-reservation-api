@@ -1,5 +1,30 @@
 ## Heroku End-Point Base Url
 - https://reservation-api-v1.herokuapp.com/ 
+  - ### End-Points: `mobile/`
+    - Auth-User
+      - `user/login`
+      - `user/register`
+      - `user/forgot-password`
+      - `user/set-new-password`
+    - Auth-Customer
+      - `customer/login`
+      - `customer/register`
+      - `customer/forgot-password`
+      - `customer/set-new-password`
+    - Store
+        - `store/add`
+        - `store/list-by-customer-id`
+    - User Store
+      - `user/store/list`
+    - Work
+      - `work/add`
+      - `work/get-work-list`
+    - Reservation
+      - `reservation/add`
+      - `reservation/get-reservation-list-by-user-id`
+      - `reservation/get-reservation-list-by-store-id`
+    
+### All Method type is `POST`
 
 # Using Typescript and Create a Reservation App
 

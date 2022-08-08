@@ -16,7 +16,7 @@ module.exports = (req: Request, res: Response) => {
         if (!user) {
             res.status(404).json({
                 code: 404,
-                message: "invalid email or password burası"
+                message: "invalid email or password"
             });
         }
 

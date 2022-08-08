@@ -14,7 +14,7 @@ router.post("/customer/set-new-password", require("../controller/customer/set-ne
 router.post('/user/register', require("../controller/user/register"));
 router.post('/user/login', require("../controller/user/login"));
 router.post('/user/forgot-password', require("../controller/user/forgot-password"));
-router.post('/user/set-password', require("../controller/user/set-password"));
+router.post('/user/set-new-password', require("../controller/user/set-password"));
 
 // Store router
 router.post('/store/add', require('../middleware/CustomerMiddleware'), require("../controller/store/add"));
@@ -31,7 +31,7 @@ router.post('/work/get-work-list', require('../middleware/CustomerMiddleware'), 
 
 //Reservation router
 router.post('/reservation/add', require('../middleware/UserMiddleware'), require("../controller/reservation/add"));
-router.post("/reservation/get-by-user-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-user-id"));
-router.post("/reservation/get-by-store-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-store-id"));
+router.post("/reservation/get-reservation-list-by-user-id`", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-user-id"));
+router.post("/reservation/get-reservation-list-by-store-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-store-id"));
 
 module.exports = router;
