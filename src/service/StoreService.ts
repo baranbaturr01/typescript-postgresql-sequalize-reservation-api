@@ -18,17 +18,18 @@ export default class StoreService implements IStoresRepo {
     }
 
 
-    getById(id: number): any {
-        return Store.findOne({where: {id: id}});
+    getById(id: number): Promise<IStores|any> {
+        return Store.findOne({where: { id}});
     }
 
     update(id: number, store: IStores): Promise<IStores> | any {
-        return Store.update(store, {where: {id: id}});
+        return Store.update(store.work_time, {where: {id: id}});
     }
 
     updateWorkTimeColumn(id: number, workTime: any): Promise<IStores> | any {
         return Store.update({work_time: workTime}, {where: {id: id}});
     }
+
 
     getByCustomerId(customerId: number): Promise<IStores> | any {
 

@@ -61,15 +61,14 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
         })
 
 
-        // console.log(getDate())
 
         const times = calculateWorkSpace(startDate, endDate, workSpace)
-        if (!isEmpty(work.Store.work_time)) {
-            return res.json({
-                success: true,
-                reservationList: data
-            })
-        }
+        // if (!isEmpty(work.Store.work_time)) {
+        //     return res.json({
+        //         code: 404,
+        //         message: "work time not found",
+        //     })
+        // }
 
         const store = new Store()
         store.id = work.Store.id
@@ -79,7 +78,7 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
         store.customer_id = work.Store.customer_id
         store.work_time = data
 
-        return storeService.updateWorkTimeColumn(store.id, store.work_time).then(() => {
+        return storeService.updateWorkTimeColumn(store.id, data).then(() => {
             return res.json({
                 success: true,
                 reservationList: data
