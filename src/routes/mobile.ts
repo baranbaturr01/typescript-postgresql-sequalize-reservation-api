@@ -1,4 +1,4 @@
-import express, {Request,Response,NextFunction} from "express";
+import express, {Request, Response, NextFunction} from "express";
 
 const router = express.Router();
 
@@ -23,7 +23,7 @@ router.post("/store/change-is-reserved", require("../controller/store/change_is_
 
 
 //User Store List
-router.post('/user/store/list', require('../middleware/UserMiddleware'), require("../controller/store/list-all"));
+router.post('/user/store/list', require("../controller/store/list-all"));
 
 //Work router
 router.post('/work/add', require('../middleware/CustomerMiddleware'), require("../controller/work/add"))
