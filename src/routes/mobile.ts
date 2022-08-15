@@ -1,4 +1,4 @@
-import express, {Request, Response, NextFunction} from "express";
+import express from "express";
 
 const router = express.Router();
 
@@ -27,7 +27,7 @@ router.post('/user/store/list', require("../controller/store/list-all"));
 
 //Work router
 router.post('/work/add', require('../middleware/CustomerMiddleware'), require("../controller/work/add"))
-router.post('/work/get-work-list', require('../middleware/UserMiddleware'), require("../controller/work/get-work-list"));
+// router.post('/work/get-work-list', require('../middleware/UserMiddleware'), require("../controller/work/get-work-list"));
 
 
 //Reservation router
@@ -35,4 +35,8 @@ router.post('/reservation/add', require('../middleware/UserMiddleware'), require
 router.post("/reservation/get-reservation-list-by-user-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-user-id"));
 router.post("/reservation/get-reservation-list-by-store-id", require('../middleware/UserMiddleware'), require("../controller/reservation/get-by-store-id"));
 
+
+//Customer Reservation List
+router.post("/customer-reservation-list/add", require("../middleware/CustomerMiddleware"), require("../controller/customer_reservation_list/add"))
+router.post("/customer-reservation-list/list-by-store-id", require("../controller/customer_reservation_list/list-by-store-id"))
 module.exports = router;

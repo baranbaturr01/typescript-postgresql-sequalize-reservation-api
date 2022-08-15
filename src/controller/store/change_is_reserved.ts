@@ -17,6 +17,23 @@ module.exports = (req: Request, res: Response) => {
                 message: "Store not found",
             })
         }
+
+        // const filterWork = store.work_time.map((work: any) => {
+        //     console.log(work)
+        //     if (work.date == date) {
+        //         work.reservation.map((reservations: any) => {
+        //
+        //             // reservations = reservations.map((reservation: any) => {
+        //             if (reservations.hour == hour) {
+        //                 reservations.is_reserved = true
+        //             }
+        //
+        //             return reservations
+        //
+        //         })
+        //         return work
+        //     }
+        // })
         const filterWork = store.work_time.filter((work: any) => work.date == date)
         const newList = filterWork.map((work: any) => {
 
@@ -24,11 +41,16 @@ module.exports = (req: Request, res: Response) => {
                 if (reservation.hour == hour) {
                     reservation.is_reserved = true
                 }
+
                 return reservation
+
             })
+            console.log(work)
             return work
         })
-        return storeService.updateWorkTimeColumn(storeId, newList).then(() => {
+
+
+        return storeService.update(storeId, newList).then(() => {
             return res.json({
                 success: true,
             })

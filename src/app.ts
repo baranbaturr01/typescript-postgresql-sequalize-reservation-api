@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 app.use('/mobile', routes)
 
-const PORT = process.env.PORT  || 3000;
+const PORT = process.env.PORT || 3000;
 //connect to database
 connection.sync({alter: true}).then(() => {
         console.log('Database connected successfully');
