@@ -1,62 +1,44 @@
 import StoreService from "../../service/StoreService";
 import {Request, Response} from "express";
+import {logger} from "sequelize/types/utils/logger";
 
 const storeService = new StoreService();
 
 module.exports = (req: Request, res: Response) => {
     const storeId = req.body.store_id;
     const date = req.body.date;
-    const hour = req.body.hour;
+    const mineHour = req.body.hour;
 
 
     storeService.getById(storeId).then(store => {
 
-        if (!store) {
-            return res.json({
-                code: 404,
-                message: "Store not found",
-            })
-        }
+            if (!store) {
+                return res.json({
+                    code: 404,
+                    message: "Store not found",
+                })
+            }
 
-        // const filterWork = store.work_time.map((work: any) => {
-        //     console.log(work)
-        //     if (work.date == date) {
-        //         work.reservation.map((reservations: any) => {
-        //
-        //             // reservations = reservations.map((reservation: any) => {
-        //             if (reservations.hour == hour) {
-        //                 reservations.is_reserved = true
-        //             }
-        //
-        //             return reservations
-        //
-        //         })
-        //         return work
-        //     }
-        // })
-        const filterWork = store.work_time.filter((work: any) => work.date == date)
-        const newList = filterWork.map((work: any) => {
-
-            work.reservation = work.reservation.map((reservation: any) => {
-                if (reservation.hour == hour) {
-                    reservation.is_reserved = true
+            const workTime = store.work_time;
+            Object.values(workTime).forEach((workTimes: any) => {
+                if (workTimes.date === date) {
+                    workTimes.reservation.forEach((hour: any) => {
+                        if (hour.hour === mineHour) {
+                            hour.is_reserved = true;
+                        }
+                    })
                 }
-
-                return reservation
-
             })
-            console.log(work)
-            return work
-        })
 
-
-        return storeService.update(storeId, newList).then(() => {
-            return res.json({
-                success: true,
+            return storeService.updateWorkTimeColumn(storeId, workTime).then(() => {
+                return res.json({
+                    code: 200,
+                    message: "Success",
+                })
             })
-        })
 
-    }).catch(err => {
+        }
+    ).catch(err => {
         res.status(500).json({
             code: 500,
             message: err.message,
